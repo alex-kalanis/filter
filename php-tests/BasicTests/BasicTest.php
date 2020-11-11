@@ -63,6 +63,8 @@ class BasicTest extends CommonTestClass
         $filter = new Filter();
         $this->assertEmpty($filter->getValue());
 
+        $this->assertInstanceOf('\Filter\IFilterEntry', $filter->getDefaultItem());
+
         $filter->setValue($this->mockEntry1());
         $filter->setValue($this->mockEntry2());
         $filter->setValue($this->mockEntry3());

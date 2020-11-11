@@ -48,4 +48,9 @@ class Filter extends AFilterEntry implements IFilter
         $this->value = [];
         return $this;
     }
+
+    public function getDefaultItem(): IFilterEntry
+    {
+        return new FilterEntry();
+    }
 }

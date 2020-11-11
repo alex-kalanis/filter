@@ -31,4 +31,10 @@ interface IFilter extends IFilterEntry
      * @return $this
      */
     public function clear(): self;
+
+    /**
+     * Return new entry usable for filtering
+     * @return IFilterEntry
+     */
+    public function getDefaultItem(): IFilterEntry;
 }

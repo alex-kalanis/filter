@@ -51,6 +51,8 @@ class ItemTest(CommonTestClass):
         filter = Filter()
         assert not filter.get_value()
 
+        assert isinstance(filter.get_default_item(), IFilterEntry)
+
         filter.set_value(self._mock_entry_1())
         filter.set_value(self._mock_entry_2())
         filter.set_value(self._mock_entry_3())
