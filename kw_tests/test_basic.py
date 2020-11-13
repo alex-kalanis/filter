@@ -49,7 +49,7 @@ class ItemTest(CommonTestClass):
 
     def test_filter_basic(self):
         filter = Filter()
-        assert not filter.get_value()
+        assert not self.iterator_to_array(filter.get_entries())
 
         assert isinstance(filter.get_default_item(), IFilterEntry)
 
@@ -57,10 +57,10 @@ class ItemTest(CommonTestClass):
         filter.set_value(self._mock_entry_2())
         filter.set_value(self._mock_entry_3())
 
-        assert filter.get_value()
+        assert self.iterator_to_array(filter.get_entries())
 
         filter.clear()
-        assert not filter.get_value()
+        assert not self.iterator_to_array(filter.get_entries())
 
     def test_filter_removal(self):
         filter = Filter()
@@ -70,13 +70,13 @@ class ItemTest(CommonTestClass):
         filter.add_filter(self._mock_entry_3())  # intentional
         filter.add_filter(self._mock_entry_2())
 
-        assert 4 == len(filter.get_value())
+        assert 4 == len(self.iterator_to_array(filter.get_entries()))
 
         filter.remove(self._mock_entry_3().get_key())
-        assert 2 == len(filter.get_value())
+        assert 2 == len(self.iterator_to_array(filter.get_entries()))
 
         filter.clear()
-        assert not filter.get_value()
+        assert not self.iterator_to_array(filter.get_entries())
 
     def test_filter_order(self):
         filter = Filter()
@@ -85,7 +85,7 @@ class ItemTest(CommonTestClass):
         filter.add_filter(self._mock_entry_3())
         filter.add_filter(self._mock_entry_2())
 
-        result = filter.get_value()
+        result = self.iterator_to_array(filter.get_entries())
         assert self._mock_entry_1().get_key() == result[0].get_key()
         assert self._mock_entry_3().get_key() == result[1].get_key()
         assert self._mock_entry_2().get_key() == result[2].get_key()
@@ -102,13 +102,13 @@ class ItemTest(CommonTestClass):
         filter1.add_filter(filter2)
         ### entry1 and (entry2 or entry3)
 
-        result = filter1.get_value()
+        result = self.iterator_to_array(filter1.get_entries())
         assert Filter.RELATION_EVERYTHING == filter1.get_relation()
         assert isinstance(result[0], FilterEntry)
         assert isinstance(result[1], Filter)
         assert self._mock_entry_1().get_key() == result[0].get_key()
 
-        result_sub = result[1].get_value()
+        result_sub = self.iterator_to_array(result[1].get_entries())
         assert Filter.RELATION_ANYTHING == result[1].get_relation()
         assert self._mock_entry_2().get_key() == result_sub[0].get_key()
         assert self._mock_entry_3().get_key() == result_sub[1].get_key()

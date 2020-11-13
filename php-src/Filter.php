@@ -3,6 +3,9 @@
 namespace Filter;
 
 
+use Traversable;
+
+
 /**
  * Class Filter
  * Filter for selecting wanted items - structure
@@ -15,9 +18,14 @@ class Filter extends AFilterEntry implements IFilter
     ];
 
     /** @var IFilter[] */
-    protected $value = [];
+    protected $entries = [];
     /** @var string */
     protected $relation = self::RELATION_EVERYTHING;
+
+    public function getEntries(): Traversable
+    {
+        yield from $this->entries;
+    }
 
     public function setValue($value): IFilterEntry
     {
@@ -29,15 +37,15 @@ class Filter extends AFilterEntry implements IFilter
 
     public function addFilter(IFilterEntry $filter): IFilter
     {
-        $this->value[] = $filter;
+        $this->entries[] = $filter;
         return $this;
     }
 
     public function remove(string $inputKey): IFilter
     {
-        foreach ($this->value as $index => $entry) {
+        foreach ($this->entries as $index => $entry) {
             if ($entry->getKey() == $inputKey) {
-                unset($this->value[$index]);
+                unset($this->entries[$index]);
             }
         }
         return $this;
@@ -45,7 +53,7 @@ class Filter extends AFilterEntry implements IFilter
 
     public function clear(): IFilter
     {
-        $this->value = [];
+        $this->entries = [];
         return $this;
     }
 

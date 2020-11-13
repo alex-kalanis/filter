@@ -11,14 +11,15 @@ namespace Filter;
 interface IFilterEntry
 {
     const RELATION_EQUAL = 'eq';
+    const RELATION_NOT_EQUAL = 'neq';
     const RELATION_LESS = 'lt';
     const RELATION_LESS_EQ = 'lteq';
     const RELATION_MORE = 'gt';
     const RELATION_MORE_EQ = 'gteq';
     const RELATION_EMPTY = 'empty';
-    const RELATION_NOT_EMPTY = '!empty';
+    const RELATION_NOT_EMPTY = 'nempty';
     const RELATION_IN = 'in';
-    const RELATION_NOT_IN = '!in';
+    const RELATION_NOT_IN = 'nin';
 
     /**
      * Set by which key the entry will be defined

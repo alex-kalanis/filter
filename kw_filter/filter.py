@@ -6,14 +6,15 @@ class IFilterEntry:
     """
 
     RELATION_EQUAL = 'eq'
+    RELATION_NOT_EQUAL = 'neq'
     RELATION_LESS = 'lt'
     RELATION_LESS_EQ = 'lteq'
     RELATION_MORE = 'gt'
     RELATION_MORE_EQ = 'gteq'
     RELATION_EMPTY = 'empty'
-    RELATION_NOT_EMPTY = '!empty'
+    RELATION_NOT_EMPTY = 'nempty'
     RELATION_IN = 'in'
-    RELATION_NOT_IN = '!in'
+    RELATION_NOT_IN = 'nin'
 
     def set_key(self, key: str):
         """
@@ -64,6 +65,13 @@ class IFilter(IFilterEntry):
     RELATION_EVERYTHING = 'and'
     RELATION_ANYTHING = 'or'
 
+    def get_entries(self):
+        """
+         * Get entries in filtering
+         * @return Traversable IFilterEntry
+        """
+        raise NotImplementedError('TBA')
+
     def add_filter(self, filter_entry: IFilterEntry):
         """
          * Add entry to filter
@@ -79,6 +87,12 @@ class IFilter(IFilterEntry):
     def clear(self):
         """
          * Clear filters
+        """
+        raise NotImplementedError('TBA')
+
+    def get_default_item(self) -> IFilterEntry:
+        """
+         * Return new entry usable for filtering
         """
         raise NotImplementedError('TBA')
 
@@ -120,6 +134,7 @@ class FilterEntry(AFilterEntry):
 
     _relations = [
         IFilterEntry.RELATION_EQUAL,
+        IFilterEntry.RELATION_NOT_EQUAL,
         IFilterEntry.RELATION_LESS,
         IFilterEntry.RELATION_LESS_EQ,
         IFilterEntry.RELATION_MORE,
@@ -166,7 +181,10 @@ class Filter(IFilter, AFilterEntry):
     def __init__(self):
         super().__init__()
         self._relation = self.RELATION_EVERYTHING
-        self._value = []
+        self._entries = []
+
+    def get_entries(self):
+        yield from self._entries
 
     def set_value(self, value):
         if isinstance(value, IFilterEntry):
@@ -174,17 +192,20 @@ class Filter(IFilter, AFilterEntry):
         return self
 
     def add_filter(self, filter_entry: IFilterEntry):
-        self._value.append(filter_entry)
+        self._entries.append(filter_entry)
         return self
 
     def remove(self, input_key: str):
         left = []
-        for entry in self._value:
+        for entry in self._entries:
             if entry.get_key() != input_key:
                 left.append(entry)
-        self._value = left
+        self._entries = left
         return self
 
     def clear(self):
-        self._value = []
+        self._entries = []
         return self
+
+    def get_default_item(self) -> IFilterEntry:
+        return FilterEntry()

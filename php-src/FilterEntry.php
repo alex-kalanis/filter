@@ -12,6 +12,7 @@ class FilterEntry extends AFilterEntry
 {
     protected static $relations = [
         self::RELATION_EQUAL,
+        self::RELATION_NOT_EQUAL,
         self::RELATION_LESS,
         self::RELATION_LESS_EQ,
         self::RELATION_MORE,

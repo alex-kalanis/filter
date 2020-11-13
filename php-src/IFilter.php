@@ -3,6 +3,9 @@
 namespace Filter;
 
 
+use Traversable;
+
+
 /**
  * Class IFilter
  * Composite of filters for selecting wanted items
@@ -11,6 +14,12 @@ interface IFilter extends IFilterEntry
 {
     const RELATION_EVERYTHING = 'and';
     const RELATION_ANYTHING = 'or';
+
+    /**
+     * Get entries in filtering
+     * @return Traversable IFilterEntry
+     */
+    public function getEntries(): Traversable;
 
     /**
      * Add entry to filter
