@@ -12,9 +12,3 @@ class CommonTestClass(unittest.TestCase):
 
     def _mock_entry_3(self) -> FilterEntry:
         return FilterEntry().set_key('baz').set_value('ghi').set_relation(FilterEntry.RELATION_LESS)
-
-    def iterator_to_array(self, iterate):
-        result = []
-        for entry in iterate:
-            result.append(entry)
-        return result
