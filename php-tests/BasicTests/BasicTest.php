@@ -6,7 +6,7 @@ use CommonTestClass;
 use Filter\Filter;
 use Filter\FilterArrayEntry;
 use Filter\FilterEntry;
-use Filter\IFilterEntry;
+use Filter\Interfaces\IFilterEntry;
 
 
 class BasicTest extends CommonTestClass
@@ -63,7 +63,7 @@ class BasicTest extends CommonTestClass
         $filter = new Filter();
         $this->assertEmpty($filter->getValue());
 
-        $this->assertInstanceOf('\Filter\IFilterEntry', $filter->getDefaultItem());
+        $this->assertInstanceOf('\Filter\Interfaces\IFilterEntry', $filter->getDefaultItem());
 
         $filter->setValue($this->mockEntry1());
         $filter->setValue($this->mockEntry2());

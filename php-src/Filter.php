@@ -10,14 +10,14 @@ use Traversable;
  * Class Filter
  * Filter for selecting wanted items - structure
  */
-class Filter extends AFilterEntry implements IFilter
+class Filter extends AFilterEntry implements Interfaces\IFilter
 {
     protected static $relations = [
         self::RELATION_EVERYTHING,
         self::RELATION_ANYTHING,
     ];
 
-    /** @var IFilter[] */
+    /** @var Interfaces\IFilter[] */
     protected $entries = [];
     /** @var string */
     protected $relation = self::RELATION_EVERYTHING;
@@ -27,21 +27,21 @@ class Filter extends AFilterEntry implements IFilter
         yield from $this->entries;
     }
 
-    public function setValue($value): IFilterEntry
+    public function setValue($value): Interfaces\IFilterEntry
     {
-        if ($value instanceof IFilterEntry) {
+        if ($value instanceof Interfaces\IFilterEntry) {
             $this->addFilter($value);
         }
         return $this;
     }
 
-    public function addFilter(IFilterEntry $filter): IFilter
+    public function addFilter(Interfaces\IFilterEntry $filter): Interfaces\IFilter
     {
         $this->entries[] = $filter;
         return $this;
     }
 
-    public function remove(string $inputKey): IFilter
+    public function remove(string $inputKey): Interfaces\IFilter
     {
         foreach ($this->entries as $index => $entry) {
             if ($entry->getKey() == $inputKey) {
@@ -51,13 +51,13 @@ class Filter extends AFilterEntry implements IFilter
         return $this;
     }
 
-    public function clear(): IFilter
+    public function clear(): Interfaces\IFilter
     {
         $this->entries = [];
         return $this;
     }
 
-    public function getDefaultItem(): IFilterEntry
+    public function getDefaultItem(): Interfaces\IFilterEntry
     {
         return new FilterEntry();
     }

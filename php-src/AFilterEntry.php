@@ -8,7 +8,7 @@ namespace Filter;
  * @package Filter
  * Abstraction class for filter entries
  */
-abstract class AFilterEntry implements IFilterEntry
+abstract class AFilterEntry implements Interfaces\IFilterEntry
 {
     protected static $relations = [];
 
@@ -16,7 +16,7 @@ abstract class AFilterEntry implements IFilterEntry
     protected $value = '';
     protected $relation = self::RELATION_EQUAL;
 
-    public function setKey(string $key): IFilterEntry
+    public function setKey(string $key): Interfaces\IFilterEntry
     {
         $this->key = $key;
         return $this;
@@ -32,7 +32,7 @@ abstract class AFilterEntry implements IFilterEntry
         return $this->value;
     }
 
-    public function setRelation(string $relation): IFilterEntry
+    public function setRelation(string $relation): Interfaces\IFilterEntry
     {
         $this->relation = in_array($relation, static::$relations) ? $relation : $this->relation;
         return $this;

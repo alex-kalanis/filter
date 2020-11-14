@@ -21,7 +21,7 @@ class FilterEntry extends AFilterEntry
         self::RELATION_NOT_EMPTY,
     ];
 
-    public function setValue($value): IFilterEntry
+    public function setValue($value): Interfaces\IFilterEntry
     {
         $this->value = (string)$value;
         return $this;

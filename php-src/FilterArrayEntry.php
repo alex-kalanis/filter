@@ -18,7 +18,7 @@ class FilterArrayEntry extends AFilterEntry
     protected $relation = self::RELATION_IN;
     protected $value = [];
 
-    public function setValue($value): IFilterEntry
+    public function setValue($value): Interfaces\IFilterEntry
     {
         $this->value = (array)$value;
         return $this;

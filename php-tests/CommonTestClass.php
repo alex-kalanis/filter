@@ -1,7 +1,7 @@
 <?php
 
 use Filter\FilterEntry;
-use Filter\IFilterEntry;
+use Filter\Interfaces\IFilterEntry;
 
 
 class CommonTestClass extends \PHPUnit\Framework\TestCase

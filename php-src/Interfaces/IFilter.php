@@ -1,6 +1,6 @@
 <?php
 
-namespace Filter;
+namespace Filter\Interfaces;
 
 
 use Traversable;

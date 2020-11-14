@@ -1,11 +1,11 @@
 <?php
 
-namespace Filter;
+namespace Filter\Interfaces;
 
 
 /**
  * Interface IFilterEntry
- * @package Filter
+ * @package Filter\Interfaces
  * Basic entry for filtering
  */
 interface IFilterEntry

@@ -1,8 +1,9 @@
-from kw_filter.filter import Filter, FilterEntry, FilterArrayEntry, IFilterEntry
+from kw_filter.interfaces import IFilterEntry
+from kw_filter.filter import Filter, FilterEntry, FilterArrayEntry
 from kw_tests.common_class import CommonTestClass
 
 
-class ItemTest(CommonTestClass):
+class BasicTest(CommonTestClass):
 
     def test_entry(self):
         entry = FilterEntry()
