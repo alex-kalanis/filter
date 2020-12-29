@@ -1,6 +1,6 @@
 <?php
 
-namespace Filter;
+namespace kalanis\kw_filter;
 
 
 use Traversable;
@@ -8,6 +8,7 @@ use Traversable;
 
 /**
  * Class Filter
+ * @package kalanis\kw_filter
  * Filter for selecting wanted items - structure
  */
 class Filter extends AFilterEntry implements Interfaces\IFilter

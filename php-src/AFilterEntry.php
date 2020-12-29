@@ -1,11 +1,11 @@
 <?php
 
-namespace Filter;
+namespace kalanis\kw_filter;
 
 
 /**
  * Class AFilterEntry
- * @package Filter
+ * @package kalanis\kw_filter
  * Abstraction class for filter entries
  */
 abstract class AFilterEntry implements Interfaces\IFilterEntry

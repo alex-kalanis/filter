@@ -1,11 +1,11 @@
 <?php
 
-namespace Filter;
+namespace kalanis\kw_filter;
 
 
 /**
  * Class FilterArrayEntry
- * @package Filter
+ * @package kalanis\kw_filter
  * Filtering by array, not by just simple compare
  */
 class FilterArrayEntry extends AFilterEntry

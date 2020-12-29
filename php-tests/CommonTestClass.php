@@ -1,7 +1,7 @@
 <?php
 
-use Filter\FilterEntry;
-use Filter\Interfaces\IFilterEntry;
+use kalanis\kw_filter\FilterEntry;
+use kalanis\kw_filter\Interfaces\IFilterEntry;
 
 
 class CommonTestClass extends \PHPUnit\Framework\TestCase

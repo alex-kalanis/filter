@@ -1,7 +1,11 @@
 {
   "name": "alex-kalanis/filter",
   "description": "Shareable filter - basic interfaces",
-  "keywords": [],
+  "keywords": [
+    "filter",
+    "inputs",
+    "interfaces"
+  ],
   "license": "BSD 3-Clause",
   "type": "project",
   "require": {
@@ -11,11 +15,18 @@
   },
   "autoload": {
     "psr-4": {
-      "Filter\\": "php-src/"
+      "kalanis\\kw_filter\\": "php-src/"
     }
   },
   "scripts": {
   },
+  "authors": [
+    {
+      "name": "Petr Plsek",
+      "homepage": "http://www.kalanys.com",
+      "role": "Developer"
+    }
+  ],
   "minimum-stability": "dev",
   "prefer-stable": true
 }

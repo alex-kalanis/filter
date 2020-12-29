@@ -1,11 +1,11 @@
 <?php
 
-namespace Filter\Interfaces;
+namespace kalanis\kw_filter\Interfaces;
 
 
 /**
  * Interface IFilterEntry
- * @package Filter\Interfaces
+ * @package kalanis\kw_filter\Interfaces
  * Basic entry for filtering
  */
 interface IFilterEntry
