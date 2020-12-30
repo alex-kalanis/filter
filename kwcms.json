@@ -1,8 +1,9 @@
 {
+  "author": "kalanis",
   "name": "Filter",
   "description": "Shareable filter - basic interfaces",
   "source": "https://github.com/alex-kalanis/filter",
-  "license": "BSD 3-Clause",
+  "license": "BSD-3-Clause",
   "require": {
     "php": ">=7.2.0"
   },

@@ -6,8 +6,8 @@
     "inputs",
     "interfaces"
   ],
-  "license": "BSD 3-Clause",
-  "type": "project",
+  "license": "BSD-3-Clause",
+  "type": "library",
   "require": {
     "php": ">=7.2.0"
   },
