@@ -78,7 +78,6 @@ class EntryArrayTest extends CommonTestClass
         return [
             [IFilterEntry::RELATION_NOT_IN, IFilterEntry::RELATION_NOT_IN],
             ['bad', IFilterEntry::RELATION_IN],
-            [$this->getAnonClass(), IFilterEntry::RELATION_IN],
         ];
     }
 

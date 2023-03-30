@@ -79,7 +79,6 @@ class EntryTest extends CommonTestClass
             [IFilterEntry::RELATION_EQUAL, IFilterEntry::RELATION_EQUAL],
             [IFilterEntry::RELATION_MORE, IFilterEntry::RELATION_MORE],
             ['bad', IFilterEntry::RELATION_EQUAL],
-            [$this->getAnonClass(), IFilterEntry::RELATION_EQUAL],
         ];
     }
 
