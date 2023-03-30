@@ -18,26 +18,52 @@ class IFilterEntry:
     def set_key(self, key: str):
         """
          * Set by which key the entry will be defined
+
+        Parameters
+        ----------
+        key: str
+
+        Returns
+        -------
+        IFilterEntry
+
         """
         raise NotImplementedError('TBA')
 
     def get_key(self) -> str:
         """
          * Filter by which entry - getter
+
+        Returns
+        -------
+        str
+
         """
         raise NotImplementedError('TBA')
 
     def set_value(self, value):
         """
          * Add/set entry value to compare
-         * @param string|string[]|IFilterEntry $value
+
+        Parameters
+        ----------
+        value: str|list[str]|IFilterEntry
+
+        Returns
+        -------
+        IFilterEntry
+
         """
         raise NotImplementedError('TBA')
 
     def get_value(self):
         """
          * What values will be set to filter
-         * @return string|string[]|IFilterEntry[]
+
+        Returns
+        -------
+        str|list[str]|list[IFilterEntry]
+
         """
         raise NotImplementedError('TBA')
 
@@ -45,6 +71,15 @@ class IFilterEntry:
         """
          * Set relationship between filters
          * Preferably use constants in IFilter
+
+        Parameters
+        ----------
+        relation: str
+
+        Returns
+        -------
+        IFilterEntry
+
         """
         raise NotImplementedError('TBA')
 
@@ -52,6 +87,11 @@ class IFilterEntry:
         """
          * What relation will be used
          * Preferably use constants above
+
+        Returns
+        -------
+        str
+
         """
         raise NotImplementedError('TBA')
 
@@ -67,30 +107,62 @@ class IFilter(IFilterEntry):
     def get_entries(self):
         """
          * Get entries in filtering
-         * @return Traversable IFilterEntry
+
+        Yields
+        -------
+        IFilterEntry
+
         """
         raise NotImplementedError('TBA')
 
     def add_filter(self, filter_entry: IFilterEntry):
         """
          * Add entry to filter
+
+        Parameters
+        ----------
+        filter_entry: IFilterEntry
+
+        Returns
+        -------
+        IFilter
+
         """
         raise NotImplementedError('TBA')
 
     def remove(self, filter_key: str):
         """
          * Remove all entries which has key
+
+        Parameters
+        ----------
+        filter_key: str
+
+        Returns
+        -------
+        IFilter
+
         """
         raise NotImplementedError('TBA')
 
     def clear(self):
         """
          * Clear filters
+
+        Returns
+        -------
+        IFilter
+
         """
         raise NotImplementedError('TBA')
 
     def get_default_item(self) -> IFilterEntry:
         """
          * Return new entry usable for filtering
+
+        Returns
+        -------
+        IFilterEntry
+
         """
         raise NotImplementedError('TBA')

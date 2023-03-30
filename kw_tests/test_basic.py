@@ -3,7 +3,7 @@ from kw_filter.filter import Filter, FilterEntry, FilterArrayEntry
 from kw_tests.common_class import CommonTestClass
 
 
-class BasicTest(CommonTestClass):
+class EntryTest(CommonTestClass):
 
     def test_entry(self):
         entry = FilterEntry()
@@ -31,6 +31,9 @@ class BasicTest(CommonTestClass):
         assert 'poi', entry.get_value()
         assert IFilterEntry.RELATION_LESS == entry.get_relation()
 
+
+class EntryArrayTest(CommonTestClass):
+
     def test_entry_arrays(self):
         entry = FilterArrayEntry()
         assert not entry.get_key()
@@ -47,6 +50,9 @@ class BasicTest(CommonTestClass):
         # not usable relation
         entry.set_relation(IFilterEntry.RELATION_EQUAL)
         assert IFilterEntry.RELATION_IN == entry.get_relation()
+
+
+class FilterTest(CommonTestClass):
 
     def test_filter_basic(self):
         filter = Filter()
