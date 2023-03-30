@@ -4,66 +4,18 @@ namespace BasicTests;
 
 use CommonTestClass;
 use kalanis\kw_filter\Filter;
-use kalanis\kw_filter\FilterArrayEntry;
 use kalanis\kw_filter\FilterEntry;
 use kalanis\kw_filter\Interfaces\IFilterEntry;
 
 
-class BasicTest extends CommonTestClass
+class FilterTest extends CommonTestClass
 {
-
-    public function testEntry(): void
-    {
-        $entry = new FilterEntry();
-        $this->assertEmpty($entry->getKey());
-        $this->assertEmpty($entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_EQUAL, $entry->getRelation());
-
-        $entry->setKey('any');
-        $this->assertEquals('any', $entry->getKey());
-        $this->assertEmpty($entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_EQUAL, $entry->getRelation());
-
-        $entry->setValue('poi');
-        $this->assertEquals('any', $entry->getKey());
-        $this->assertEquals('poi', $entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_EQUAL, $entry->getRelation());
-
-        $entry->setRelation(IFilterEntry::RELATION_LESS);
-        $this->assertEquals('any', $entry->getKey());
-        $this->assertEquals('poi', $entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_LESS, $entry->getRelation());
-
-        $entry->setRelation('bad');
-        $this->assertEquals('any', $entry->getKey());
-        $this->assertEquals('poi', $entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_LESS, $entry->getRelation());
-    }
-
-    public function testEntryArrays(): void
-    {
-        $entry = new FilterArrayEntry();
-        $this->assertEmpty($entry->getKey());
-        $this->assertEmpty($entry->getValue());
-        $this->assertEquals(IFilterEntry::RELATION_IN, $entry->getRelation());
-
-        $entry->setValue(['dum', 'din', 'don']);
-        $this->assertEquals(3, count($entry->getValue()));
-
-        $entry->setValue('dummy');
-        $this->assertEquals(['dummy'], $entry->getValue());
-
-        // not usable relation
-        $entry->setRelation(IFilterEntry::RELATION_EQUAL);
-        $this->assertEquals(IFilterEntry::RELATION_IN, $entry->getRelation());
-    }
-
     public function testFilterBasic(): void
     {
         $filter = new Filter();
         $this->assertEmpty($filter->getValue());
 
-        $this->assertInstanceOf('\kalanis\kw_filter\Interfaces\IFilterEntry', $filter->getDefaultItem());
+        $this->assertInstanceOf(IFilterEntry::class, $filter->getDefaultItem());
 
         $filter->setValue($this->mockEntry1());
         $filter->setValue($this->mockEntry2());
@@ -124,12 +76,12 @@ class BasicTest extends CommonTestClass
         /** @var Filter[] $result */
         $result = iterator_to_array($filter1->getEntries());
         $this->assertEquals(Filter::RELATION_EVERYTHING, $filter1->getRelation());
-        $this->assertInstanceOf('\kalanis\kw_filter\FilterEntry', $result[0]);
-        $this->assertInstanceOf('\kalanis\kw_filter\Filter', $result[1]);
+        $this->assertInstanceOf(FilterEntry::class, $result[0]);
+        $this->assertInstanceOf(Filter::class, $result[1]);
         $this->assertEquals($this->mockEntry1()->getKey(), $result[0]->getKey());
 
         /** @var IFilterEntry[] $resultSub */
-        $resultSub = iterator_to_array($result[1]->getEntries());
+        $resultSub = $result[1]->getValue();
         $this->assertEquals(Filter::RELATION_ANYTHING, $result[1]->getRelation());
         $this->assertEquals($this->mockEntry2()->getKey(), $resultSub[0]->getKey());
         $this->assertEquals($this->mockEntry3()->getKey(), $resultSub[1]->getKey());

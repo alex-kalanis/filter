@@ -10,10 +10,12 @@ namespace kalanis\kw_filter;
  */
 abstract class AFilterEntry implements Interfaces\IFilterEntry
 {
+    /** @var string[] */
     protected static $relations = [];
 
+    /** @var string */
     protected $key = '';
-    protected $value = '';
+    /** @var string */
     protected $relation = self::RELATION_EQUAL;
 
     public function setKey(string $key): Interfaces\IFilterEntry
@@ -25,11 +27,6 @@ abstract class AFilterEntry implements Interfaces\IFilterEntry
     public function getKey(): string
     {
         return $this->key;
-    }
-
-    public function getValue()
-    {
-        return $this->value;
     }
 
     public function setRelation(string $relation): Interfaces\IFilterEntry

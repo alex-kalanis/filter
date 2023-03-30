@@ -18,7 +18,7 @@ class Filter extends AFilterEntry implements Interfaces\IFilter
         self::RELATION_ANYTHING,
     ];
 
-    /** @var Interfaces\IFilter[] */
+    /** @var Interfaces\IFilter[]|Interfaces\IFilterEntry[] */
     protected $entries = [];
     /** @var string */
     protected $relation = self::RELATION_EVERYTHING;
@@ -34,6 +34,11 @@ class Filter extends AFilterEntry implements Interfaces\IFilter
             $this->addFilter($value);
         }
         return $this;
+    }
+
+    public function getValue()
+    {
+        return $this->entries;
     }
 
     public function addFilter(Interfaces\IFilterEntry $filter): Interfaces\IFilter

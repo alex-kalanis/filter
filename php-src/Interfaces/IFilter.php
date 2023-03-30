@@ -18,7 +18,7 @@ interface IFilter extends IFilterEntry
 
     /**
      * Get entries in filtering
-     * @return Traversable IFilterEntry
+     * @return Traversable<IFilterEntry>
      */
     public function getEntries(): Traversable;
 
